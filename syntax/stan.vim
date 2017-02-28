@@ -71,28 +71,14 @@ syn match stanDistributed /\~/
 " syn keyword stanType data model  array category character complex real function integer list logical matrix numeric vector data.frame 
 " syn keyword stanType var 
 
-syn keyword stanType  int real cov_matrix corr_matrix vector matrix simplex
+syn keyword stanType int real vector row_vector matrix unit_vector simplex ordered positive_ordered cholesky_factor_cov cholesky_factor_corr cov_matrix corr_matrix
 syn keyword stanBlk functions data model parameters transformed generated quantities 
 " syn keyword stanBlk derived
 syn match equalSign /=/
 syn keyword stanLU lower upper nextgroup=equalSign skipwhite
 
 syn match leftParen /(/
-syn keyword stanDistributions normal uniform multi_normal inv_gamma 
-syn keyword stanDistributions normal_log uniform_log multi_normal_log inv_gamma_log 
-syn keyword stanDistributions categorical categorical_log  
-syn keyword stanDistributions normal_trunc_l normal_trunc_h  normal_trunc_lh exponential inv_chi_square student cauchy  
-syn keyword stanDistributions normal_trunc_l_log normal_trunc_h_log  normal_trunc_lh_log exponential_log inv_chi_square_log student_log cauchy_log  
-syn keyword stanDistributions double_exponential weibull logistic lognormal dirichlet skew_normal
-syn keyword stanDistributions double_exponential_log weibull_log logistic_log lognormal_log dirichlet_log 
-syn keyword stanDistributions bernoulli binomial neg_binomial beta_binomial poisson 
-syn keyword stanDistributions bernoulli_log binomial_log neg_binomial_log beta_binomial_log poisson_log 
-syn keyword stanDistributions bernoulli_logit bernoulli_logit_log 
-syn keyword stanDistributions wishart inv_wishart 
-syn keyword stanDistributions wishart_log inv_wishart_log  exp_mod_normal frechet scaled_inv_chi_square
-
-syn keyword stanDistributions normal_cdf_log exponential_cdf_log  weibull_cdf_log gamma_cdf_log 
-syn keyword stanDistributions normal_ccdf_log exponential_ccdf_log  weibull_ccdf_log gamma_ccdf_log 
+syn keyword stanDistributions  bernoulli bernoulli_logit beta_binomial binomial binomial_logit categorical categorical_logit cauchy chi_square dirichlet double_exponential exp_mod_normal exponential frechet gaussian_dlm_obs gumbel hypergeometric inv_chi_square inv_gamma inv_wishart lkj_corr_cholesky lkj_corr logistic lognormal multi_gp multi_gp_cholesky multi_normal_cholesky multi_normal multi_normal_prec multi_student_t multinomial neg_binomial neg_binomial_2 neg_binomial_2_log normal ordered_logistic pareto pareto_type_2 poisson poisson_log rayleigh scaled_inv_chi_square skew_normal student_t uniform von_mises weibull wiener wishart
 " only highight gamma beta such that there is '(' after
 " that indicating it is distribution.
 " For the time being, not define others. `normal` should 
@@ -101,23 +87,19 @@ syn match stanDistributionsII  /gamma\(\s*(\)\@=/
 syn match stanDistributionsII  /beta\(\s*(\)\@=/
 
 
-syn keyword stanFunctions exp sum log pow mean abs inv_logit  determinant  fabs pi 
-syn keyword stanFunctions col row sd 
-syn keyword stanFunctions int_step inv_cloglog inverse lbeta lgamma lmgamma log log10 log1m log1m_inv_logit log1p logp1p_exp log2 log_determinant log_inv_logit log_sum_exp logit max mdivide_left_tri_low midivide_right_tri_low mean min multiply_Log multiply_lower_tri_self_transpose negative_epsilon negative_infinity not_a_number pi positive_infinity pow prod round row rows sd sin singuar_values sinh size softmax sqrt sqrt2 square step sum tan tanh
-syn keyword stanFunctions binary_log_loss binomial_coefficient_log  atan2 atan asin asinh atanh block cbrt ceil cholesy_decompose col cols cos cosh crossprod cumulative_sum diag_matrix diag_post_multiply diag_pre_multiply diagnoal dims dot_product dot_self e eigenvalues_sym eigenvectors_sym epsilon erf erfc exp exp2 expm1 fdim floor fma fmax fmin fmod hypot if_else 
-syn keyword stanFunctions bernoulli_cdf beta_binomial_cdf beta_cdf binomial_cdf exponential_cdf inv_chi_square_cdf inv_gamma_cdf logistic_cdf lognormal_cdf neg_binomial_cdf normal_cdf pareto_cdf poisson_cdf scaled_inv_chi_square_cdf student_t_cdf
-syn keyword stanFunctions bernoulli_ccdf beta_binomial_ccdf beta_ccdf binomial_ccdf exponential_ccdf inv_chi_square_ccdf inv_gamma_ccdf logistic_ccdf lognormal_ccdf neg_binomial_ccdf normal_ccdf pareto_ccdf poisson_ccdf scaled_inv_chi_square_ccdf student_t_ccdf rows_dot_self rows_dot_product 
-syn keyword stanFunctions increment_log_prob falling_factorial rising_factorial frechet_rng frechet_log frechet_cdf frechet_cdf_log frechet_ccdf_log get_lp gumbel_rng gumbel_cdf_log gumbel_ccdf_log head tail hypergeometric_rng hypergeometric_log  sub_col sub_row squared_distance  sort_indices_asc sort_indices_desc sort_asc sort_desc skew_normal_rng skew_normal_log skew_normal_cdf_log skew_normal_ccdf_log
-syn keyword stanFunctions double_exponential_cdf  double_exponential_cdf_log double_exponential_ccdf_log double_exponential_rng segment scaled_inv_chi_square_ccdf scaled_inv_chi_square_cdf_log scaled_inv_chi_square_ccdf_log scaled_inv_chi_square_rng 
-syn keyword stanFunctions exp_mod_normal_rng  exp_mod_normal_log exp_mod_normal_cdf exp_mod_normal_ccdf exp_mod_normal_ccdf_log log_diff_exp log_mix modified_bessel_first_kind modified_bessel_second_kind multi_gp_log multi_gp_cholesky_log log_softmax log_rising_factorial  log_falling_factorial tcrossprod 
-syn keyword stanDistributions multi_gp_cholesky multi_gp rayleigh von_mises
-syn keyword stanFunctions bernoulli_rng beta_binomial_rng beta_rng binomial_rng exponential_rng inv_chi_square_rng inv_gamma_rng logistic_rng lognormal_rng neg_binomial_rng normal_rng pareto_rng poisson_rng scaled_inv_chi_square_rng student_t_rng rep_array rep_matrix von_mises_rng von_mises_log trace_gen_quad_form trace_quad_form trace to_array_1d to_vector to_array_2d to_matrix 
-syn keyword stanFunctions eigenvectors_sym eigenvectors_sym inverse_spd inv_sqrt num_elements qr_Q qr_R quad_form quad_form_sym quad_form_diag rank  rayleigh_rng rayleigh_log rayleigh_cdf rayleigh_cdf_log rayleigh_ccdf_log
-" step function in stan
-" defined as step(y) = y < 0 ? 0 : 1
-syn keyword stanFunctions step append_row append_col 
-" normal CDF 
-syn keyword stanFunctions Phi  Phi_approx 
+syn keyword stanFunctions beta_lpdf cauchy_lpdf chi_square_lpdf dirichlet_lpdf double_exponential_lpdf exp_mod_normal_lpdf exponential_lpdf frechet_lpdf gamma_lpdf gaussian_dlm_obs_lpdf gumbel_lpdf inv_chi_square_lpdf inv_gamma_lpdf inv_wishart_lpdf lkj_corr_cholesky_lpdf lkj_corr_lpdf logistic_lpdf lognormal_lpdf multi_gp_lpdf multi_gp_cholesky_lpdf multi_normal_cholesky_lpdf multi_normal_lpdf multi_normal_prec_lpdf multi_student_t_lpdf normal_lpdf pareto_lpdf pareto_type_2_lpdf rayleigh_lpdf scaled_inv_chi_square_lpdf skew_normal_lpdf student_t_lpdf uniform_lpdf von_mises_lpdf weibull_lpdf wiener_lpdf wishart_lpdf
+
+syn keyword stanFunctions bernoulli_lpmf bernoulli_logit_lpmf beta_binomial_lpmf binomial_lpmf binomial_logit_lpmf categorical_lpmf categorical_logit_lpmf hypergeometric_lpmf multinomial_lpmf neg_binomial_lpmf neg_binomial_2_lpmf neg_binomial_2_log_lpmf ordered_logistic_lpmf poisson_lpmf poisson_log_lpmf
+
+syn keyword stanFunctions bernoulli_cdf bernoulli_lccdf bernoulli_lcdf beta_binomial_cdf beta_binomial_lccdf beta_binomial_lcdf beta_cdf beta_lccdf beta_lcdf binomial_cdf binomial_lccdf binomial_lcdf cauchy_cdf cauchy_lccdf cauchy_lcdf chi_square_cdf chi_square_lccdf chi_square_lcdf double_exponential_cdf double_exponential_lccdf double_exponential_lcdf exp_mod_normal_cdf exp_mod_normal_lccdf exp_mod_normal_lcdf exponential_cdf exponential_lccdf exponential_lcdf frechet_cdf frechet_lccdf frechet_lcdf gamma_cdf gamma_lccdf gamma_lcdf gumbel_cdf gumbel_lccdf gumbel_lcdf inv_chi_square_cdf inv_chi_square_lccdf inv_chi_square_lcdf inv_gamma_cdf inv_gamma_lccdf inv_gamma_lcdf logistic_cdf logistic_lccdf logistic_lcdf lognormal_cdf lognormal_lccdf lognormal_lcdf neg_binomial_cdf neg_binomial_lccdf neg_binomial_lcdf neg_binomial_2_cdf neg_binomial_2_lccdf neg_binomial_2_lcdf normal_cdf normal_lccdf normal_lcdf pareto_cdf pareto_lccdf pareto_lcdf pareto_type_2_cdf pareto_type_2_lccdf pareto_type_2_lcdf poisson_cdf poisson_lccdf poisson_lcdf rayleigh_cdf rayleigh_lccdf rayleigh_lcdf scaled_inv_chi_square_cdf scaled_inv_chi_square_lccdf scaled_inv_chi_square_lcdf skew_normal_cdf skew_normal_lccdf skew_normal_lcdf student_t_cdf student_t_lccdf student_t_lcdf uniform_cdf uniform_lccdf uniform_lcdf weibull_cdf weibull_lccdf weibull_lcdf
+
+syn keyword stanFunctions bernoulli_lcdf beta_binomial_lcdf beta_lcdf binomial_lcdf cauchy_lcdf chi_square_lcdf double_exponential_lcdf exp_mod_normal_lcdf exponential_lcdf frechet_lcdf gamma_lcdf gumbel_lcdf inv_chi_square_lcdf inv_gamma_lcdf logistic_lcdf lognormal_lcdf neg_binomial_lcdf neg_binomial_2_lcdf normal_lcdf pareto_lcdf pareto_type_2_lcdf poisson_lcdf rayleigh_lcdf scaled_inv_chi_square_lcdf skew_normal_lcdf student_t_lcdf uniform_lcdf weibull_lcdf
+
+syn keyword stanFunctions bernoulli_lccdf beta_binomial_lccdf beta_lccdf binomial_lccdf cauchy_lccdf chi_square_lccdf double_exponential_lccdf exp_mod_normal_lccdf exponential_lccdf frechet_lccdf gamma_lccdf gumbel_lccdf inv_chi_square_lccdf inv_gamma_lccdf logistic_lccdf lognormal_lccdf neg_binomial_lccdf neg_binomial_2_lccdf normal_lccdf pareto_lccdf pareto_type_2_lccdf poisson_lccdf rayleigh_lccdf scaled_inv_chi_square_lccdf skew_normal_lccdf student_t_lccdf uniform_lccdf weibull_lccdf
+
+syn keyword stanFunctions bernoulli_rng bernoulli_logit_rng beta_binomial_rng beta_rng binomial_rng categorical_rng cauchy_rng chi_square_rng dirichlet_rng double_exponential_rng exp_mod_normal_rng exponential_rng frechet_rng gamma_rng gumbel_rng hypergeometric_rng inv_chi_square_rng inv_gamma_rng inv_wishart_rng lkj_corr_cholesky_rng lkj_corr_rng logistic_rng lognormal_rng multi_normal_rng multi_normal_cholesky_rng multi_student_t_rng multinomial_rng neg_binomial_rng neg_binomial_2_rng neg_binomial_2_log_rng normal_rng ordered_logistic_rng pareto_rng pareto_type_2_rng poisson_rng poisson_log_rng rayleigh_rng scaled_inv_chi_square_rng skew_normal_rng student_t_rng uniform_rng von_mises_rng weibull_rng wishart_rng
+
+syn keyword stanFunctions abs acos acosh add asin asinh atan atan2 atanh bessel_first_kind bessel_second_kind binary_log_loss block append_col cbrt ceil cholesky_decompose choose col cols columns_dot_product columns_dot_self cos cosh cov_exp_quad crossprod csr_matrix_times_vector csr_to_dense_matrix csr_extract_w csr_extract_v csr_extract_u cumulative_sum determinant diag_matrix diag_post_multiply diag_pre_multiply diagonal digamma dims distance divide dot_product dot_self e eigenvalues_sym eigenvectors_sym qr_Q qr_R elt_divide elt_multiply erf erfc exp exp2 expm1 fabs falling_factorial fdim floor fma fmax fmin fmod gamma_p gamma_q get_lp head hypot if_else inc_beta int_step inv inv_cloglog inv_logit inv_Phi inv_sqrt inv_square inverse inverse_spd is_inf is_nan lbeta lchoose lgamma lmgamma lmultiply log log10 log1m log1m_exp log1m_inv_logit log1p log1p_exp log2 log_determinant log_diff_exp log_falling_factorial log_mix log_rising_factorial log_inv_logit log_softmax log_sum_exp logical_negation logical_or logical_and logical_eq logical_neq logical_lt logical_lte logical_gt logical_gte logit machine_precision matrix_exp max mdivide_left mdivide_left_spd mdivide_left_tri_low mdivide_right mdivide_right_spd mdivide_right_tri_low mean min minus modified_bessel_first_kind modified_bessel_second_kind modulus multiply multiply_lower_tri_self_transpose negative_infinity not_a_number num_elements owens_t Phi Phi_approx pi positive_infinity pow prod quad_form quad_form_sym quad_form_diag rank append_row rep_array rep_matrix rep_row_vector rep_vector rising_factorial round row rows rows_dot_product rows_dot_self sd segment sin singular_values sinh size softmax sort_asc sort_desc sort_indices_asc sort_indices_desc squared_distance sqrt sqrt2 square step sub_col sub_row subtract sum tail tan tanh target tcrossprod tgamma to_array_1d to_array_2d to_matrix to_row_vector to_vector trace trace_gen_quad_form trace_quad_form transpose trunc trigamma variance
 
 " Special
 syn match stanDelimiter /[,;:><]/
